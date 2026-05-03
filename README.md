@@ -2,7 +2,7 @@
 
 > A bilingual (RU/EN) web app for students tracking expenses during the study abroad application process.
 
-**Live demo:** `your-link.vercel.app`
+**Live demo:** https://umibudget-tamaki-rgbs-projects.vercel.app
 
 ---
 
@@ -76,4 +76,4 @@ MIT — free to use, fork, and build on.
 
 ---
 
-*Built by [Your Name] · Kazakhstan · 2025*
+*Built by [Umid] · Kazakhstan · 2026*
