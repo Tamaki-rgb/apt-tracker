@@ -137,8 +137,12 @@ function useLocalStorage(key, init) {
     try { const s = localStorage.getItem(key); return s ? JSON.parse(s) : (typeof init === "function" ? init() : init); }
     catch { return typeof init === "function" ? init() : init; }
   });
-  useEffect(() => { try { localStorage.setItem(key, JSON.stringify(val)); } catch {} }, [key, val]);
-  return [val, setVal];
+  const setAndSave = (newVal) => {
+    const resolved = typeof newVal === "function" ? newVal(val) : newVal;
+    try { localStorage.setItem(key, JSON.stringify(resolved)); } catch {}
+    setVal(resolved);
+  };
+  return [val, setAndSave];
 }
 
 // ── Language Toggle ───────────────────────────────────────────────────────────
@@ -421,7 +425,7 @@ export default function BudgetTracker() {
       {/* ── EXPENSES ── */}
       {activeTab==="expenses" && <div>
         <button style={S.btnAdd} onClick={()=>setShowForm(v=>!v)}>{showForm ? t.close : t.addExpense}</button>
-        {showForm && <div style={S.formCard}>
+  {showForm && <div style={S.formCard}>
           <div style={S.formGrid}>
             <div><label style={S.label}>{t.name}</label>
               <input style={S.input} value={form.name} onChange={e=>setForm({...form,name:e.target.value})} /></div>
