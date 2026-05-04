@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect, createContext, useContext } from "react";
 
-// ── Translations ──────────────────────────────────────────────────────────────
 const T = {
   en: {
     appTitle: "Application Budget Tracker",
@@ -107,7 +106,6 @@ const T = {
 const LangCtx = createContext({ lang: "ru", t: T.ru });
 const useLang = () => useContext(LangCtx);
 
-// ── Default data ──────────────────────────────────────────────────────────────
 const DEFAULT_CATEGORIES = [
   { id: "tests",   label: { ru: "Тесты",     en: "Tests"       }, icon: "📝", color: "#6366F1" },
   { id: "courses", label: { ru: "Курсы",     en: "Courses"     }, icon: "📚", color: "#0EA5E9" },
